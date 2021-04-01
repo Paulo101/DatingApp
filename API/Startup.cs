@@ -1,3 +1,6 @@
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Net.Mime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +38,7 @@ namespace API
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
+            services.AddCors();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -56,6 +60,12 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(
+                x =>
+                {
+                     x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:59310");
+                });
 
             app.UseAuthorization();
 

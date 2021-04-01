@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using API.Data;
-using API.Entities;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.Entities;
 using Microsoft.EntityFrameworkCore;
+
  
 
 namespace API.Controllers
